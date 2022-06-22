@@ -7,17 +7,23 @@ if len(argv) != 2:
 
 def factorize(value):
    q = 2
+
+   if value < 2:
+      return
    
    while value % q:
       q += 1
    p = value / q
    print("{:.0f}={:.0f}*{:.0f}".format(value, p, q))
 
-my_file = open(argv[1], "r")
+try:
+   my_file = open(argv[1], "r")
 
-if my_file.mode == 'r':
-   lines = my_file.readlines()
-   lines = [int(x.split('\n')[0]) for x in lines]
-
-   for line in lines:
-      factorize(line)
+   if my_file.mode == 'r':
+      line = my_file.readline()
+      while line != "":
+         n = int(line.split('\n')[0])
+         factorize(n)
+         line = my_file.readline()
+except:
+   pass

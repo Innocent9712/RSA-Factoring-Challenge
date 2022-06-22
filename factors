@@ -1,0 +1,23 @@
+#!/usr/bin/python3
+
+from sys import argv
+
+if len(argv) != 2:
+   exit()
+
+def factorize(value):
+   q = 2
+   
+   while value % q:
+      q += 1
+   p = value / q
+   print("{:.0f}={:.0f}*{:.0f}".format(value, p, q))
+
+my_file = open(argv[1], "r")
+
+if my_file.mode == 'r':
+   lines = my_file.readlines()
+   lines = [int(x.split('\n')[0]) for x in lines]
+
+   for line in lines:
+      factorize(line)

@@ -48,6 +48,5 @@ def fc():
     except (IndexError):
         pass
 
-
 # autostart
 fc()
